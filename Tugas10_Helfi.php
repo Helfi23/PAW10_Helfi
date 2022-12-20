@@ -1,27 +1,67 @@
 <?php
-$perulangan = [
-array("Helfi","20200040038", "Teknik Informatika", "helfi.nusaputra.ac.id", "90","Lulus"),
-array("Roy", "20200040039", "Teknik Informatika", "roy.nusaputra.ac.id","60","Tidak Lulus"),
-array("Ajay", "20200040040", "Teknik Informatika", "ajay.nusaputra.ac.id","80","Lulus")
+
+$mahasiswa = [
+  ["nama"=>"Rizky", "NIM"=>"123456", "Jurusan"=>"TI", "Email"=>"Rizky@gmail.com", "Nilai"=>"90"],
+  ["nama"=>"Rizky", "NIM"=>"123456", "Jurusan"=>"TI", "Email"=>"Rizky@gmail.com", "Nilai"=>"60"],
+  ["nama"=>"Rizky", "NIM"=>"123456", "Jurusan"=>"TI", "Email"=>"Rizky@gmail.com", "Nilai"=>"80"],
 ];
- 
-echo "<table border='1'";
-echo "<tr=>
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perulangan </title>
+</head>
+<style>
+  table {
+    border-collapse:collapse;
+  }
+  thead {
+    Margin : 100%;
+  }
+  a {
+    color:Yellow;
+  }
+</style>
+
+<body>
+  <table border=1>
+    <thead>
+      <tr>
         <th>Nama</th>
         <th>NIM</th>
         <th>Jurusan</th>
-        <th>Email</th>
+        <th id="Email">Email</th>
         <th>Nilai</th>
         <th>Status</th>
-    </tr>";
-foreach ($perulangan as $perulangan => $ulang)
-{
-	echo "<tr>";
-	foreach ($ulang as $hasil)
-	{
-		echo "<td>" . $hasil . "</td>";
-	}	
- 
-}	
-  echo "</tr></table>";
-?>
+      </tr>
+    </thead>
+
+    <?php
+    $perulangan=0;
+    while ($perulangan < count($mahasiswa)) {
+        echo "<tr>";
+          echo "<td><a>".$mahasiswa[$perulangan]["nama"]."</a></td>";
+          echo "<td>".$mahasiswa[$perulangan]["NIM"]."</td>";
+          echo "<td>".$mahasiswa[$perulangan]["Jurusan"]."</td>";
+          echo "<td><a>".$mahasiswa[$perulangan]["Email"]."</a></td>";
+          echo "<td>".$mahasiswa[$perulangan]["Nilai"]."</td>";
+
+          if ($mahasiswa[$perulangan]["Nilai"] >= 70) {
+            echo "<td> Lulus </td>";
+          } else {
+            echo "<td> Tidak Lulus </td>";
+          }
+          
+
+        echo "</tr>";
+        $perulangan++;
+    }
+    ?>
+  </table>
+</body>
+</html>
